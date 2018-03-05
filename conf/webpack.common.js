@@ -15,21 +15,26 @@ module.exports = {
   devtool: 'source-map', // enhance debugging by adding meta info for the browser devtools
 
   entry: {
-    app: './index.js'
+    app: './walletSdk/index.js'
   },
 
   output: {
     path: path.join(process.cwd(), 'dist'),
-    filename: '[name].[hash].js',
+    //filename: '[name].[hash].js',
+    filename: 'StellarWalletSdk.js',
     publicPath: '/',
-    sourceMapFilename: '[name].map'
+    //sourceMapFilename: '[name].map',
+    sourceMapFilename: 'StellarWalletSdk.map',
+    library: 'StellarWalletSdk',
+    libraryTarget: 'umd'
   },
-
   resolve: {
     extensions: ['.js'],  // extensions that are used
     modules: [path.join(process.cwd(), 'src'), 'node_modules'] // directories where to look for modules
   },
-
+  node: {
+    fs: "empty"
+ },
   module: {
     rules: [{
       enforce: "pre", //to check source files, not modified by other loaders (like babel-loader)
@@ -42,7 +47,7 @@ module.exports = {
       use: {
         loader: 'babel-loader',
         options: {
-          presets: ['env']
+          presets: ['env','es2015']
         }
       }
     },{
@@ -67,7 +72,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist'], {root: process.cwd()}),
     new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor"
+      name: "app"
     }),
     new HtmlWebpackPlugin({
       template: 'index.html'

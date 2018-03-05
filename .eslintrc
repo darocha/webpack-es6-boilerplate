@@ -11,20 +11,24 @@
     },
     "rules": {
         "indent": [
-            "error",
+            "off",
             "tab"
         ],
         "linebreak-style": [
-            "error",
-            "unix"
+            "off",
+            "windows"
+        ],
+        "no-mixed-spaces-and-tabs":[
+            "off"
         ],
         "quotes": [
-            "error",
+            "off",
             "single"
         ],
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "no-console": "off"
     }
 }
