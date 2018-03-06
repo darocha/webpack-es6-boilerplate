@@ -1,6 +1,7 @@
 import axios from 'axios';
 import StellarHDWallet from 'stellar-hd-wallet';
 
+
 // mnemonics with different lengths
 // StellarHDWallet.generateMnemonic() // 24 words
 // StellarHDWallet.generateMnemonic({entropyBits: 224}) // 21 words
@@ -44,9 +45,10 @@ export function recoverKeypair(mnemonic, passphrase, idx = 0) {
 
 export function fundTestAccount(publicAddress) {
     
-	axios.get('https://horizon-testnet.stellar.org/friendbot?addr=' + publicAddress)
+	return axios.get('https://horizon-testnet.stellar.org/friendbot?addr=' + publicAddress)
 		.then(r => {
 			console.log(r);
+			return r;
 		})
 		.catch(e => {
 			let code, message;

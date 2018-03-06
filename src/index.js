@@ -1,10 +1,8 @@
-import { StellarWalletSdk } from './walletSdk';
+import { generateKeypair } from './walletSdk';
 
-console.log(StellarWalletSdk);
+console.log(generateKeypair);
 
-//import './index.scss';
+import './index.scss';
 
-//document.getElementById('root').innerHTML = JSON.stringify(StellarWalletSdk.generateKeypair());
-
-
+document.getElementById('root').innerHTML = JSON.stringify(generateKeypair());
 
